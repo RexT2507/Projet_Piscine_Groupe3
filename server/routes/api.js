@@ -3,6 +3,8 @@ const router = express.Router();
 
 const User = require('../models/user');
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
+
 const url = 'mongodb://127.0.0.1:27017';
 const dbName = 'projetsdb';
 
@@ -34,18 +36,40 @@ router.get('/', (req, res) => {
 });
 
 router.post('/register', (req, res) => {
-    let userData = req.body;
-    let user = new User(userData);
-    user.save((error, registerdUser) => {
-        if (error) 
+
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+        if (err) 
         {
-            console.log(error);
+            return res.status(500).json({
+                error: err
+            });
         }
         else
         {
-            res.status(200).send(registerdUser);
+            const user = new User({
+                _id: new mongoose.Types.ObjectId(),
+                email: req.body.email,
+                password: hash
+            });    
+            
+            user.save()
+                .then(result => {
+                    console.log(result);
+                    res.status(201).json({
+                        message: 'Utilisateur créé',
+                        result
+                    });
+                })
+                .catch(err => {
+                    console.log(err);
+                    res.status(500).json({
+                        error: err
+                    });
+                });
         }
     })
+
+    
 });
 
 module.exports = router;
