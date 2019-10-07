@@ -102,4 +102,18 @@ router.post('/login', (req, res) =>
 
 }); // Fin de la méthode login
 
+router.get('/projets', (req, res) => {
+    let projets = [
+        {
+            "_id": "1",
+            "name": "Ynov VM",
+            "description": "Demande de mise en place d'un site, ainsi qu'une VM Debian",
+            "date": "07/10/2019"
+        }
+    ];
+
+    res.json(projets);
+});
+
+
 module.exports = router;
