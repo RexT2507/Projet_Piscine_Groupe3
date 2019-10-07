@@ -70,6 +70,36 @@ router.post('/register', (req, res) => {
     })
 
     
-});
+});// Fin de la méthode register
+
+router.post('/login', (req, res) => 
+{
+    let database = req.body
+
+    User.findOne({email: database.email}, (err, user) => {
+
+      if (err) 
+      {
+        console.log(err);    
+      } 
+      else 
+      {
+        if (!user) 
+        {
+          res.status(401).send('Email invalide');
+        } 
+        else if (!bcrypt.compare(user.password, database.password)) 
+        {
+          res.status(401).send('Mot de passe invalide');
+        } 
+        else 
+        {
+          res.status(200).send(user);
+        }
+      }
+
+    });
+
+}); // Fin de la méthode login
 
 module.exports = router;
