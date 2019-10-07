@@ -130,16 +130,18 @@ router.post('/add-projet', (req, res) => {
 });
 
 router.get('/projets', (req, res) => {
-    let projets = [
+    database.collection('projets').find().toArray((err, result) => {
+        if (err) 
         {
-            "_id": "1",
-            "name": "Ynov VM",
-            "description": "Demande de mise en place d'un site, ainsi qu'une VM Debian",
-            "date": "07/10/2019"
+            return res.status(500).json({
+                error: err
+            });
         }
-    ];
-
-    res.json(projets);
+        else
+        {
+            res.send(result);
+        }
+    });
 });
 
 router.get('/valid', (req, res) => {
