@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const User = require('../models/user');
+const Projet = require('../models/projet');
+
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
@@ -102,6 +104,31 @@ router.post('/login', (req, res) =>
 
 }); // Fin de la méthode login
 
+router.post('/add-projet', (req, res) => {
+
+    const projet = new Projet({
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.name,
+        description: req.body.description,
+        date: req.body.date
+    });
+
+    projet.save()
+        .then(result => {
+            console.log(result);
+            res.status(201).json({
+                message: 'Demande ajoutée',
+                result
+            });
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error: err
+            });
+        });
+});
+
 router.get('/projets', (req, res) => {
     let projets = [
         {
@@ -125,7 +152,13 @@ router.get('/valid', (req, res) => {
             "valid_description": "Demande accepté mise en place en cours",
             "valid_date": "10/10/2019"
         }
-   ]; 
+   ];
+   
+   res.json(projets);
 });
+
+router.get('/refuse', (req, res) => {
+
+})
 
 module.exports = router;
