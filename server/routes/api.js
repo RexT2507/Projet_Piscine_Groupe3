@@ -115,5 +115,17 @@ router.get('/projets', (req, res) => {
     res.json(projets);
 });
 
+router.get('/valid', (req, res) => {
+   let projets = [
+        {
+            "_id": "1",
+            "name": "Ynov VM",
+            "description": "Demande de mise en place d'un site, ainsi qu'une VM Debian",
+            "date": "07/10/2019",
+            "valid_description": "Demande accepté mise en place en cours",
+            "valid_date": "10/10/2019"
+        }
+   ]; 
+});
 
 module.exports = router;
