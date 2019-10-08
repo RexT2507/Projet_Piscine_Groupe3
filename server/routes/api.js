@@ -104,7 +104,7 @@ router.post('/login', (req, res) =>
 
 }); // Fin de la méthode login
 
-router.post('/add-projet', (req, res) => {
+router.post('/projets/add', (req, res) => {
 
     const projet = new Projet({
         _id: new mongoose.Types.ObjectId(),
