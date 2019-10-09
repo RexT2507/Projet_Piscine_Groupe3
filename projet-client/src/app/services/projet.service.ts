@@ -6,8 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProjetService {
 
-  private projetsUrl = '';
-  private validProjetsUrl = '';
+  private projetsUrl = 'http://localhost:3000/api/projets';
+  private validProjetsUrl = 'http://localhost:3000/api/valid';
 
   constructor(private http: HttpClient) { }
 
