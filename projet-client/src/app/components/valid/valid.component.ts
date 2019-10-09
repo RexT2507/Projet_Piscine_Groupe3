@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjetService } from 'src/app/services/projet.service';
 
 @Component({
   selector: 'app-valid',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ValidComponent implements OnInit {
 
-  constructor() { }
+  validProjets = [];
+
+  constructor(private projetService: ProjetService) { }
 
   ngOnInit() {
+    this.projetService.getValidProjets()
+      .subscribe(
+        res => this.validProjets = res,
+        err => console.log(err)
+      );
   }
 
 }
