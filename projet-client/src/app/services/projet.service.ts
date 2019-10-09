@@ -15,5 +15,7 @@ export class ProjetService {
     return this.http.get<any>(this.projetsUrl);
   }
 
-
+  getValidProjets() {
+    return this.http.get<any>(this.validProjetsUrl);
+  }
 }
