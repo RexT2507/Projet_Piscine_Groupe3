@@ -4,6 +4,7 @@ import { ProjetsComponent } from './components/projets/projets.component';
 import { ValidComponent } from './components/valid/valid.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
+import { AuthGuard } from './services/auth.guard';
 
 
 const routes: Routes = [
@@ -18,6 +19,7 @@ const routes: Routes = [
   },
   {
     path: 'valid',
+    canActivate: [AuthGuard],
     component: ValidComponent
   },
   {

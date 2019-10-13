@@ -11,6 +11,7 @@ import { ProjetsComponent } from './components/projets/projets.component';
 import { ValidComponent } from './components/valid/valid.component';
 import { AuthService } from './services/auth.service';
 import { ProjetService } from './services/projet.service';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { ProjetService } from './services/projet.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AuthService, ProjetService],
+  providers: [AuthService, AuthGuard, ProjetService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
