@@ -29,6 +29,26 @@ database.on('error', err => {
     console.error('Erreur de connexion:', err);
 });
 
+function verifyToken(req, res, next) 
+{
+    if (!req.headers.authorization)
+    {
+        return res.status(401).send('Demande non autorisée');
+    }
+    let token = req.headers.authorization.split(' ')[1];
+    if (token === 'null')
+    {
+        return res.status(401).send('Demande non autorisée');
+    }
+    let playload = jwt.verify(token, 'secretKey');
+    if (!playload)
+    {
+        return res.status(401).send('Demande non autorisée');
+    }
+    req.userId = playload.subject
+    next()
+}
+
 router.get('/', (req, res) => {
     res.send(`
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -146,7 +166,7 @@ router.get('/projets', (req, res) => {
     });
 });
 
-router.get('/valid', (req, res) => {
+router.get('/valid', verifyToken, (req, res) => {
    let projets = [
         {
             "_id": "1",
