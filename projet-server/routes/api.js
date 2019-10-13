@@ -1,4 +1,5 @@
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 const User = require('../models/user');
@@ -57,10 +58,9 @@ router.post('/register', (req, res) => {
             user.save()
                 .then(result => {
                     console.log(result);
-                    res.status(201).json({
-                        message: 'Utilisateur créé',
-                        result
-                    });
+                    let playload = { subject: user._id };
+                    let token = jwt.sign(playload, 'secretKey');
+                    res.status(200).send({token});
                 })
                 .catch(err => {
                     console.log(err);
@@ -96,7 +96,9 @@ router.post('/login', (req, res) =>
         } 
         else 
         {
-          res.status(200).send(user);
+            let playload = { subject : user._id };
+            let token = jwt.sign(playload, 'secretKey');
+            res.status(200).send({token});
         }
       }
 
