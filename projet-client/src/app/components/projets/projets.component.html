@@ -17,7 +17,61 @@
         <p class="card-text">{{projet.description}}</p>
 
         <div class="col text-center">
-          <a href="#" class="btn btn-primary">Détails</a>
+          <button  type="button" class="btn btn-primary" (click)="hide()">Détails</button>
+          <div style="display: none" class="pt-4" id="detail">
+
+            <mat-vertical-stepper #stepper>
+
+              <mat-step [stepControl]="FormGroup">
+                <form [formGroup]="FormGroup">
+                  <ng-template matStepLabel>Machine virtuelle</ng-template>
+                  <mat-form-field>
+                    <input matInput placeholder="Système d'exploitation" value="CentOS 7" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="RAM" value="32Go" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Stockage" value="5T" required>
+                  </mat-form-field>
+                  <div>
+                    <button class="btn btn-primary" matStepperNext>Suivant</button>
+                  </div>
+                </form>
+              </mat-step>
+
+              <mat-step [stepControl]="FormGroup">
+                <form [formGroup]="FormGroup">
+                  <ng-template matStepLabel>Site Web</ng-template>
+                  <mat-form-field>
+                    <input matInput placeholder="Langage" value="Angular 8" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="API" value="REST Express" required>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <input matInput placeholder="Base de données" value="MongoDB" required>
+                  </mat-form-field>
+                  <div>
+                    <button class="btn btn-primary" matStepperPrevious>Retour</button>
+                  </div>
+                </form>
+              </mat-step>
+
+              <!-- <mat-step>
+                <ng-template matStepLabel>Enregistrer</ng-template>
+                Vous pouvez maitenant envoyer la demande.
+                <div>
+                  <button class="btn btn-success" matStepperPrevious>Enregistrer</button>
+                  <div class="pt-4">
+                    <button class="btn btn-danger" (click)="stepper.reset()">Recommancer</button>
+                  </div>
+                </div>
+              </mat-step> -->
+
+            </mat-vertical-stepper>
+
+          </div>
         </div>
 
       </div>
