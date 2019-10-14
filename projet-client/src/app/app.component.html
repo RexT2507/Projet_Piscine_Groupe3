@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 
   <a class="navbar-brand" href="#">Menu principal</a>
 
@@ -22,8 +22,9 @@
     </ul>
 
     <ul class="navbar-nav">
-      <a class="nav-link"  [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
-      <a class="nav-link" [routerLink]="['/register']" routerLinkActive="router-link-active" >Créer un compte</a>
+      <a class="nav-link" *ngIf="!authService.loggedIn()" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
+      <a class="nav-link" *ngIf="!authService.loggedIn()" [routerLink]="['/register']" routerLinkActive="router-link-active" >Créer un compte</a>
+      <a class="nav-link" style="cursor: pointer;" *ngIf="authService.loggedIn()" (click)="authService.logoutUser()">Logout</a>
     </ul>
 
   </div>
