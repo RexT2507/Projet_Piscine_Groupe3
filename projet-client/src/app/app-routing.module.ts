@@ -5,6 +5,7 @@ import { ValidComponent } from './components/valid/valid.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { AuthGuard } from './services/auth.guard';
+import { RefusComponent } from './components/refus/refus.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,11 @@ const routes: Routes = [
     path: 'valid',
     canActivate: [AuthGuard],
     component: ValidComponent
+  },
+  {
+    path: 'refus',
+    canActivate: [AuthGuard],
+    component: RefusComponent
   },
   {
     path: 'login',

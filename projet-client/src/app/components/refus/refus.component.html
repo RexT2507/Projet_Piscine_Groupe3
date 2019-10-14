@@ -1,12 +1,12 @@
 <div class="row mat-5 pt-5">
 
-  <div class="col-md-4 mb-3" *ngFor="let valid of validProjets">
+  <div class="col-md-4 mb-3" *ngFor="let refus of refusProjets">
 
     <div class="card">
 
       <div class="card-header text-center">
 
-        <h5 class="card-title">{{valid.name}}</h5>
+        <h5 class="card-title">{{refus.name}}</h5>
 
       </div>
 
@@ -14,7 +14,7 @@
 
 
         <h6>Description :</h6>
-        <p class="card-text">{{valid.description}}</p>
+        <p class="card-text">{{refus.description}}</p>
 
         <div class="col text-center">
           <button  type="button" class="btn btn-primary" (click)="hide()">Détails</button>
@@ -26,13 +26,16 @@
                 <form [formGroup]="FormGroup">
                   <ng-template matStepLabel>Machine virtuelle</ng-template>
                   <mat-form-field>
-                    <input matInput placeholder="Système d'exploitation" value="Debian 9" required>
+                    <input matInput placeholder="Système d'exploitation" value="Windows Server 2016" required>
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput placeholder="RAM" value="16Go" required>
+                    <input matInput placeholder="RAM" value="64Go" required>
+                    <input matInput style="color: red;" value="Mémoire insuffisante" required>
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput placeholder="Stockage" value="2T" required>
+                    <input matInput placeholder="Stockage" value="10T" required>
+                    <input matInput style="color: red;" value="Taille du stockage" required>
+                    <input matInput style="color: red;" value="non comprise dans l'offre" required>
                   </mat-form-field>
                   <div>
                     <button class="btn btn-primary" matStepperNext>Suivant</button>
@@ -44,13 +47,15 @@
                 <form [formGroup]="FormGroup">
                   <ng-template matStepLabel>Site Web</ng-template>
                   <mat-form-field>
-                    <input matInput placeholder="Langage" value="Angular 6" required>
+                    <input matInput placeholder="Langage" value="Angular 9" required>
+                    <input matInput style="color: red;" value="Langage non stable" required>
+                    <input matInput style="color: red;" value="pour l'instant" required>
                   </mat-form-field>
                   <mat-form-field>
                     <input matInput placeholder="API" value="REST Spring Boot" required>
                   </mat-form-field>
                   <mat-form-field>
-                    <input matInput placeholder="Base de données" value="Mysql" required>
+                    <input matInput placeholder="Base de données" value="Sql Server" required>
                   </mat-form-field>
                   <div>
                     <button class="btn btn-primary" matStepperPrevious>Retour</button>
@@ -61,8 +66,8 @@
               </mat-step>
 
               <mat-step>
-                <ng-template matStepLabel>Compte Rendu</ng-template>
-                Pojet validé, un mail vous a été envoyé avec le récapitulatif de votre demande.
+                <ng-template matStepLabel>Raison du refus</ng-template>
+                Projet refusé, un mail vous a été envoyé avec le récapitulatif du refus.
               </mat-step>
 
             </mat-vertical-stepper>
@@ -73,9 +78,9 @@
       </div>
 
       <div class="card-footer text-muted">
-        <strong>Date de création : </strong>{{valid.date}}
+        <strong>Date de création : </strong>{{refus.date}}
         <br>
-        <strong>Date de validation : </strong>{{valid.valid_date}}
+        <strong>Date de refus : </strong>{{refus.refus_date}}
       </div>
 
     </div>

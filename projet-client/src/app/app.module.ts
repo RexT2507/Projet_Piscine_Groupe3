@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
+import { RefusComponent } from './components/refus/refus.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/materi
     RegisterComponent,
     LoginComponent,
     ProjetsComponent,
-    ValidComponent
+    ValidComponent,
+    RefusComponent
   ],
   imports: [
     BrowserModule,
