@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProjetService } from 'src/app/services/projet.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-valid',
@@ -12,7 +13,18 @@ export class ValidComponent implements OnInit {
 
   validProjets = [];
 
-  constructor(private projetService: ProjetService, private router: Router) { }
+  FormGroup: FormGroup;
+
+  constructor(private projetService: ProjetService, private router: Router, private formBuilder: FormBuilder) { }
+
+  hide() {
+    const x = document.getElementById('detail');
+    if (x.style.display === 'none') {
+      x.style.display = 'block';
+    } else {
+      x.style.display = 'none';
+    }
+  }
 
   ngOnInit() {
     this.projetService.getValidProjets()
@@ -26,6 +38,9 @@ export class ValidComponent implements OnInit {
           }
         }
       );
+    this.FormGroup = this.formBuilder.group({
+      Ctrl: ['', Validators.required]
+    });
   }
 
 }
