@@ -181,8 +181,19 @@ router.get('/valid', verifyToken, (req, res) => {
    res.json(projets);
 });
 
-router.get('/refuse', (req, res) => {
-
-})
+router.get('/refuse', verifyToken, (req, res) => {
+    let projets = [
+        {
+            "_id": "1",
+            "name": "Poudlard",
+            "description": "Demande de mise en place d'un site de l'école de sorcier, ainsi qu'une VM Windows Server",
+            "date": "10/10/2019",
+            "refus_description": "Demande refusé consultez les commentaires",
+            "refus_date": "10/10/2019"
+        }
+   ];
+   
+   res.json(projets);
+});
 
 module.exports = router;
