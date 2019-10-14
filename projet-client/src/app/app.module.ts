@@ -18,6 +18,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatStepperModule, MatInputModule, MatButtonModule} from '@angular/material';
 import { RefusComponent } from './components/refus/refus.component';
+import { AddProjetComponent } from './components/add-projet/add-projet.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { RefusComponent } from './components/refus/refus.component';
     LoginComponent,
     ProjetsComponent,
     ValidComponent,
-    RefusComponent
+    RefusComponent,
+    AddProjetComponent
   ],
   imports: [
     BrowserModule,

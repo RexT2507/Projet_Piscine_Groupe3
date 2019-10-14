@@ -9,6 +9,7 @@ export class ProjetService {
   private projetsUrl = 'http://localhost:3000/api/projets';
   private validProjetsUrl = 'http://localhost:3000/api/valid';
   private refusProjetUrl = 'http://localhost:3000/api/refuse';
+  private addProjetUrl = 'http://localhost:3000/api/projets/add';
 
   constructor(private http: HttpClient) { }
 
@@ -23,4 +24,9 @@ export class ProjetService {
   getRefusProjets() {
     return this.http.get<any>(this.refusProjetUrl);
   }
+
+  addProjets(projet: any) {
+    return this.http.post<any>(this.addProjetUrl, projet);
+  }
+
 }
