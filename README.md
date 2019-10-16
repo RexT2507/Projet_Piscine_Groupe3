@@ -38,6 +38,5 @@ Services de développement et d'hébergement de site internet au travers du Web.
 
 ## Documentation du projet
 
-Liens vers la [documentation].
+Liens vers la [documentation](https://rext2507.github.io/Projet_Piscine_Groupe3/projet-client/documentation/index.html){:target="_blank"}
 
-[documentation]: https://rext2507.github.io/Projet_Piscine_Groupe3/projet-client/documentation/index.html
