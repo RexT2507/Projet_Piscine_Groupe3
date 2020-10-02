@@ -1,9 +1,9 @@
-# Projet_Piscine_Groupe3
+# Project_Piscine_Groupe3
 Services de développement et d'hébergement de site internet au travers du Web.
 
 # Installation du projet
 
-## Projet côté client
+## Project côté client
 
 + Ouvrez le dossier projet-client
 + Tapez la commande `npm i`
@@ -12,7 +12,7 @@ Services de développement et d'hébergement de site internet au travers du Web.
 + Lancer l'application en tapant la commande `ng serve -o`
 
 
-## Projet côté server
+## Project côté server
 
 + Ouvrez le dossier projet-server
 + Tapez la commande `npm i`
@@ -21,7 +21,7 @@ Services de développement et d'hébergement de site internet au travers du Web.
 + Lancer l'API REST en tapant la commande `nodemon server.js`
 
 
-## Projet côté base de donnée
+## Project côté base de donnée
 
 + Aller dans le dossier "bin" du dossier MongoDB
 + Puis tapez la commande suivante `mongorestore -d chemin_utilisateur/projetsdb`
